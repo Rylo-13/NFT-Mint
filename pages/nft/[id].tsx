@@ -1,10 +1,15 @@
-import React from "react";
 import Image from "next/image";
 import clonex from "../../images/clonex.png";
 import bluechips from "../../images/bluechips.png";
-import type { NextPage } from "next";
+import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 
 function NFTDropPage() {
+  // Auth
+  const connectWithMetamask = useMetamask();
+  const address = useAddress();
+  const disconnect = useDisconnect();
+  // ---
+
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
       {/* Left */}
@@ -41,12 +46,23 @@ function NFTDropPage() {
             MARKET PLACE
           </h1>
 
-          <button className="rounded-full bg-purple-700 px-4 py-2 text-xs font-bold text-white hover:bg-purple-800 hover:text-gray-200 lg:px-5 lg:py-3">
-            Sign In
+          <div></div>
+
+          <button
+            onClick={() => (address ? disconnect() : connectWithMetamask())}
+            className="rounded-full bg-purple-700 px-4 py-2 text-xs font-bold text-white hover:bg-purple-800 hover:text-gray-200 lg:px-5 lg:py-2 lg:text-base"
+          >
+            {address ? "Sign Out" : "Sign In"}
           </button>
         </header>
 
         <hr className="my-2 border"></hr>
+        {address && (
+          <p className="text-center text-sm text-pink-400/50">
+            You're connected with wallet {address.substring(0, 5)}...
+            {address.substring(address.length - 5)}{" "}
+          </p>
+        )}
 
         {/* Content */}
 
@@ -61,7 +77,7 @@ function NFTDropPage() {
             What blue chip will you mint?
           </h1>
 
-          <p className="pt-4 text-xl text-pink-400">3 / 10 NFT's claimed!</p>
+          <p className="pt-4 text-xl text-pink-400/50">3 / 10 NFT's claimed!</p>
         </div>
 
         {/* Mint Button */}
