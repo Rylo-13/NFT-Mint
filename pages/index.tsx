@@ -5,7 +5,7 @@ import clonex from "../public/clonex.png";
 import bluechips from "../public/bluechips.png";
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 
-export default function home() {
+export default function main() {
   // Auth
   const connectWithMetamask = useMetamask();
   const address = useAddress();
@@ -13,7 +13,7 @@ export default function home() {
   // ---
 
   return (
-    <div className="">
+    <div>
       <Head>
         <title>NFT Dapp</title>
         <link rel="icon" href="/favicon.ico" />
