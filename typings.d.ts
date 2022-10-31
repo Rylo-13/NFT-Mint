@@ -17,7 +17,7 @@ export interface Creator {
 
 export interface Collection {
   _id: string;
-  ttitle: string;
+  title: string;
   description: string;
   nftCollectionName: string;
   address: string;

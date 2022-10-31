@@ -10,13 +10,40 @@ interface Props {
 
 const Home = ({ collections }: Props) => {
   return (
-    <div className="">
+    <div className="mx-auto max-w-7xl flex flex-col min-h-screen py-20 px-10 2xl:px-0">
       <Head>
         <title>Rando-Mint</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="">Welcome to RANDO-MINT</h1>
+      <h1 className="mb-10 text-4xl font-extralight">
+        THE{" "}
+        <span className="font-semibold text-gray-800 underline decoration-purple-700/50">
+          RANDO-MINT
+        </span>{" "}
+        MARKET PLACE
+      </h1>
+
+      <main className="bg-gray-100 p-10 shadow-xl shadow-violet-700/10">
+        <div className="grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {collections.map((collection) => (
+            <div className="flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-105">
+              <img
+                className="h-96 w-60 rounded-2xl object-cover"
+                src={urlFor(collection.previewImage).url()}
+                alt=""
+              />
+
+              <div className="p-5">
+                <h2 className="text-3xl">{collection.title}</h2>
+                <p className="mt-2 text-sm text-gray-500">
+                  {collection.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
 };
