@@ -8,6 +8,8 @@ interface Props {
   collections: Collection[];
 }
 
+// Test
+
 const Home = ({ collections }: Props) => {
   return (
     <div className="mx-auto max-w-7xl flex flex-col min-h-screen py-20 px-10 2xl:px-0">
