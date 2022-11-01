@@ -1,6 +1,6 @@
 export default {
   name: "collection",
-  title: "collection",
+  title: "Collection",
   type: "document",
   fields: [
     {
@@ -12,6 +12,11 @@ export default {
     {
       name: "description",
       title: "Description",
+      type: "string",
+    },
+    {
+      name: "nftCollectionName",
+      title: "Name of NFT Collection",
       type: "string",
     },
     {
